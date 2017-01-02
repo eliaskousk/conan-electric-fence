@@ -193,7 +193,7 @@ int
 main(int argc, char * * argv)
 {
     static const struct diagnostic *    diag = diagnostics;
-    
+
 
     EF_PROTECT_BELOW = 0;
     EF_ALIGNMENT = 0;
@@ -208,9 +208,10 @@ main(int argc, char * * argv)
              * is broken. Also, use _exit() instead of exit(),
              * because _exit() doesn't flush stdio.
              */
-            write(2, failedTest, sizeof(failedTest) - 1);
-            write(2, diag->explanation, strlen(diag->explanation));
-            write(2, &newline, 1);
+            int ret = 0;
+            ret = write(2, failedTest, sizeof(failedTest) - 1);
+            ret = write(2, diag->explanation, strlen(diag->explanation));
+            ret = write(2, &newline, 1);
             _exit(-1);
         }
         diag++;
