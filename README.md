@@ -3,7 +3,7 @@
 
 [Conan.io](https://conan.io) package for Eletric Fence library
 
-The packages generated with this **conanfile** can be found in [conan.io](https://conan.io/source/electric-fence/2.2.0/lasote/stable).
+The packages generated with this **conanfile** can be found in [conan.io](https://conan.io/source/electric-fence/2.2.0/eliaskousk/stable).
 
 ## Build packages
 
@@ -13,20 +13,20 @@ Download conan client from [Conan.io](https://conan.io) and run:
     
 ## Upload packages to server
 
-    $ conan upload electric-fence/2.2.0@lasote/stable --all
+    $ conan upload electric-fence/2.2.0@eliaskousk/stable --all
     
 ## Reuse the packages
 
 ### Basic setup
 
-    $ conan install electric-fence/2.2.0@lasote/stable
+    $ conan install electric-fence/2.2.0@eliaskousk/stable
     
 ### Project setup
 
 If you handle multiple dependencies in your project is better to add a *conanfile.txt*
     
     [requires]
-    electric-fence/2.2.0@lasote/stable
+    electric-fence/2.2.0@eliaskousk/stable
 
     [options]
     electric-fence:shared=true # false

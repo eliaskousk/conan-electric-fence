@@ -14,13 +14,13 @@ class ElectricFenceConan(ConanFile):
     options = {"shared": [True, False]}
     default_options = "shared=False"
     exports = ["CMakeLists.txt"]
-    url="http://github.com/lasote/conan-electric-fence"
+    url="http://github.com/eliaskousk/conan-electric-fence"
     license="GNU GENERAL PUBLIC LICENSE Version 2"
 
     def config(self):
         try: # Try catch can be removed when conan 0.8 is released
             del self.settings.compiler.libcxx
-        except: 
+        except:
             pass
 
     def source(self):
@@ -35,8 +35,8 @@ class ElectricFenceConan(ConanFile):
         """
         shutil.move("%s/CMakeLists.txt" % self.ZIP_FOLDER_NAME, "%s/CMakeListsOriginal.cmake" % self.ZIP_FOLDER_NAME)
         shutil.move("CMakeLists.txt", "%s/CMakeLists.txt" % self.ZIP_FOLDER_NAME)
-        
-        
+
+
         cmake = CMake(self.settings)
 
         self.run("mkdir -p %s/_build"  % self.ZIP_FOLDER_NAME)
