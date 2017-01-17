@@ -1,6 +1,7 @@
 from conans import ConanFile
 import os, shutil
 from conans.tools import download, unzip, replace_in_file
+from conans.tools import cpu_count
 from conans import CMake
 
 
@@ -43,7 +44,7 @@ class ElectricFenceConan(ConanFile):
         cd_build = "cd %s/_build" % self.ZIP_FOLDER_NAME
         shared = "-DBUILD_SHARED_LIBS=ON" if self.options.shared else ""
         self.run('%s && cmake .. %s %s' % (cd_build, cmake.command_line, shared))
-        self.run("%s && cmake --build . %s" % (cd_build, cmake.build_config))
+        self.run("%s && cmake --build . %s -- -j%s" % (cd_build, cmake.build_config, cpu_count()))
 
     def package(self):
         # Copying zlib.h, zutil.h, zconf.h
